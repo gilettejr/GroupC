@@ -6,30 +6,34 @@ tempTrender::tempTrender(string filePath) {
 	//cout << "The user supplied " << getFilePath() << " as the path to the data file." << endl;
 }
 
+//Determine at what date the average temperature is above 0 and below 10
 void tempTrender::aveSpringArrive(){
 	
 }
 
 //Function for reading temperature values to vector temp_vec
-void tempTrender::readfile(string dataFile, vector<double> & temp_vec){
-	temp_vec.clear();
-	cout << "Reading file " << dataFile << " ...\n";
-	Int_t line = -1; // Counter
+void tempTrender::readfile(string dataFile, vector<double> & tempVec){
+	Int_t row = -1; // Counter
 	Int_t year;
 	Int_t month;
 	Int_t day;
 	Int_t id;
 	Double_t temp = 0;
 	Double_t temp_urban = 0;
-	string quality;
+	tempVec.clear();
+	cout << "Reading file " << dataFile << " ...\n";
 	ifstream file(dataFile.c_str());
+	string line;
 	//Loop for reading file
-	while(file >> year >> month >> day >> temp >> temp_urban >> id)
+	while(getline(file,line, '\n'))
 	{
-		line++;
-		temp_vec.push_back(temp);
-		cout << temp_vec[line] << endl;
-		//ss >> year >> month >> day >> temp >> temp_urban >> id;
+		stringstream ss(line);
+		row++;
+		if(ss >> year >> month >> day >> temp >> temp_urban >> id)
+		{
+			tempVec.push_back(temp);
+			cout << tempVec[row] << endl;
+		}
 	}
 	file.close();
 }

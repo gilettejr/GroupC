@@ -25,19 +25,19 @@ class tempTrender {
 	
 	void setFilePath(string filePath){filePath_=filePath;}
 	string getFilePath(){return filePath_;}
-	vector<double>& getTempVec(){return temp_vec_;}
+	vector<double>& getTempVec(){return tempVec_;}
 	
 	//void tempOnDay(int monthToCalculate, int dayToCalculate); //Make a histogram of the temperature on this day
 	//void tempOnDay(int dateToCalculate); //Make a histogram of the temperature on this date
 	//void tempPerDay(); //Make a histogram of the average temperature of each day of the year
 	//void hotCold(); //Make a histogram of the hottest and coldest day of the year
 	//void tempPerYear(int yearToExtrapolate); //Make a histogram of average temperature per year, then fit and extrapolate to the given year
-	void readfile(string dataFile, vector<double> & temp_vec);
+	void readfile(string dataFile, vector<double> & tempVec);
 	void aveSpringArrive();
 	
 	private:
 	string filePath_;
-	vector<double> temp_vec_;
+	vector<double> tempVec_;
 };
 
 #endif
