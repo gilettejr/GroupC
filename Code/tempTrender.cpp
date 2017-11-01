@@ -5,14 +5,11 @@ tempTrender::tempTrender(string filePath) {
 	setFilePath(filePath);
 }
 
-//Determine at what date the average temperature is above 0 and below 10
-void tempTrender::aveSpringArrive(){
-	
-}
 
+//Determine at what date the average temperature is above 0 and below 10
 //Function for reading temperature values to vector temp_vec
 //Only work for "uppsala_tm_1722_2013.dat" file
-void tempTrender::readfileSA(string dataFile, vector<double> & tempVec){
+void tempTrender::springArrive(string dataFile){
 	TH1F *h1 = new TH1F("h1","x distr", 100, 0, 400);
 	Int_t dayCount = 12;
 	Int_t daysWeek = 7;
@@ -20,10 +17,8 @@ void tempTrender::readfileSA(string dataFile, vector<double> & tempVec){
 	Int_t month, sMonth = 0;
 	Int_t day, sDay = 0;
 	Int_t id;
-	Double_t temp;
-	Double_t temp_urban;
+	Double_t temp, temp_urban;
 	bool foundSpring = false;
-	tempVec.clear();
 	cout << "Reading file " << dataFile << " ...\n";
 	ifstream file(dataFile.c_str()); //Open file
 	string line;
@@ -68,8 +63,7 @@ void tempTrender::readfileSA(string dataFile, vector<double> & tempVec){
 							if(i == daysWeek-1) //Save temp of first day
 							{
 								foundSpring = true;
-								tempVec.push_back(dayCount - (daysWeek+1)); //(daysWeek+1), dayCount incremented by 1 previously
-								h1->Fill(dayCount - (daysWeek+1));
+								h1->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), dayCount incremented by 1 previously
 								//Print date of spring
 								cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << endl;
 							}
