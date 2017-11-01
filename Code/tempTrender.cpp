@@ -14,20 +14,22 @@ void tempTrender::aveSpringArrive(){
 void tempTrender::readfile(string dataFile, vector<double> & temp_vec){
 	temp_vec.clear();
 	cout << "Reading file " << dataFile << " ...\n";
-	stringstream ss;
 	Int_t line = -1; // Counter
-	string date;
-	string time;
+	Int_t year;
+	Int_t month;
+	Int_t day;
+	Int_t id;
 	Double_t temp = 0;
+	Double_t temp_urban = 0;
 	string quality;
-
 	ifstream file(dataFile.c_str());
-	Int_t eventNo = -1;
 	//Loop for reading file
-	while(getline(file, date))
+	while(file >> year >> month >> day >> temp >> temp_urban >> id)
 	{
 		line++;
-		file >> date >> time >> temp >> quality;
+		temp_vec.push_back(temp);
+		cout << temp_vec[line] << endl;
+		//ss >> year >> month >> day >> temp >> temp_urban >> id;
 	}
 	file.close();
 }
