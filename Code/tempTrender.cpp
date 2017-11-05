@@ -18,7 +18,7 @@ void tempTrender::springArrive(int dataset){
 	}
 	//Histograms
 	TH1I *hDays = new TH1I("h1","Spring hist;Day;Entries", 365, 1, 365); //Histogram of days
-	TH1D *hTemp = new TH1D("Entry", "Temperature on first day of spring;Temperature[#circC];Entries", 10, 0, 10); //Histogram of temps
+	TH1D *hTemp = new TH1D("Entry", "Temperature on first day of spring;Temperature[#circC];Entries", 30, 0, 10); //Histogram of temps
 	hDays->SetFillColor(kRed +1);
 	hTemp->SetFillColor(kBlue+1);
 	//Variables for reading and storing data
@@ -102,11 +102,14 @@ void tempTrender::springArrive(int dataset){
 	hDays->Draw();
 	TCanvas* can2 = new TCanvas("canSpringDayTemp", "Temperature on first spring day", 900, 600);
 	hTemp->SetMinimum(0);
-	hTemp->Draw("");
+	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
 	TF1* fitExp = new TF1("Exponential", "[1]*[0]*exp(-[0]*x)", 0, 10);
 	fitExp->SetParameters(0,1);
 	fitExp->SetParameters(1,100);
 	hTemp->Fit(fitExp);
+	//Save figures
+	can->SaveAs("springArrive_dayHist.jpg");
+	can2->SaveAs("springArrive_tempHist.jpg");
 }
 
