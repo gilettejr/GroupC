@@ -9,16 +9,30 @@ tempTrender::tempTrender(string filePath) {
 //Determine at what date the average temperature is above 0 and below 10
 //Function for reading temperature values to vector temp_vec
 //Only work for "uppsala_tm_1722_2013.dat" file
-void tempTrender::springArrive(string dataFile){
-	TH1F *h1 = new TH1F("h1","x distr", 100, 0, 400);
-	Int_t dayCount = 12;
+void tempTrender::springArrive(int dataset){
+	//Check input
+	if(dataset < 1 || dataset > 6)
+	{
+		cout << "Incorrect call of springArrive\n";
+		exit(1);
+	}
+	//Histograms
+	TH1I *hDays = new TH1I("h1","Spring hist;Day;Entries", 365, 1, 365); //Histogram of days
+	TH1D *hTemp = new TH1D("Entry", "Temperature on first day of spring;Temperature[#circC];Entries", 10, 0, 10); //Histogram of temps
+	hDays->SetFillColor(kRed +1);
+	hTemp->SetFillColor(kBlue+1);
+	//Variables for reading and storing data
+	Int_t dayCount = 12; //Starting point in Uppsala data set
 	Int_t daysWeek = 7;
 	Int_t year, sYear = 0;
 	Int_t month, sMonth = 0;
 	Int_t day, sDay = 0;
 	Int_t id;
-	Double_t temp, temp_urban;
+	Double_t temp, temp_urban, sTemp = 0;
 	bool foundSpring = false;
+	//**************************************
+	//Open file
+	string dataFile = getFilePath();
 	cout << "Reading file " << dataFile << " ...\n";
 	ifstream file(dataFile.c_str()); //Open file
 	string line;
@@ -52,20 +66,22 @@ void tempTrender::springArrive(string dataFile){
 				if(ss >> year >> month >> day >> temp >> temp_urban >> id) //check output can is eligible
 				{
 					dayCount++;
-					if(id==1)//Take data from Uppsala
+					if(id==dataset)//Take data from dataset
 					{
 						//dayCount>=46 represent 15 feb (minimum date for spring), month<8 remove missing data (otherwise autumn is classified as spring)
 						if(temp_urban >= 0 && temp_urban <= 10 && dayCount >= 46 && month < 8) //Check if temp fulfill definition of spring
 						{
 							if(i==0){
 								sYear=year; sMonth=month; sDay=day;
+								sTemp=temp_urban;
 							}
 							if(i == daysWeek-1) //Save temp of first day
 							{
 								foundSpring = true;
-								h1->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), dayCount incremented by 1 previously
+								hDays->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), dayCount incremented by 1 previously
+								hTemp->Fill(sTemp);
 								//Print date of spring
-								cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << endl;
+								cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << sTemp << endl;
 							}
 						}
 						else //If temperature is not in interval, start new iteration
@@ -75,6 +91,17 @@ void tempTrender::springArrive(string dataFile){
 			}
 	}
 	file.close();
-	h1->Draw();
+	//Draw extracted data
+	TCanvas* can = new TCanvas("canSpringDay", "Spring day", 900, 600);
+	hDays->SetMinimum(0);
+	hDays->Draw();
+	TCanvas* can2 = new TCanvas("canSpringDayTemp", "Temperature on first spring day", 900, 600);
+	hTemp->SetMinimum(0);
+	hTemp->Draw("");
+	//Define and fit exponential function to temperature histogram
+	TF1* fitExp = new TF1("Exponential", "[1]*[0]*exp(-[0]*x)", 0, 10);
+	fitExp->SetParameters(0,1);
+	fitExp->SetParameters(1,100);
+	hTemp->Fit(fitExp);
 }
 
