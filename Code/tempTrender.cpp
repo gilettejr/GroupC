@@ -31,10 +31,13 @@ void tempTrender::springArrive(int dataset){
 	Double_t temp, temp_urban, sTemp = 0;
 	bool foundSpring = false;
 	//**************************************
-	//Open file
+	//Read file "dataFile", write file "found_spring_date.dat"
 	string dataFile = getFilePath();
 	cout << "Reading file " << dataFile << " ...\n";
 	ifstream file(dataFile.c_str()); //Open file
+	ofstream springDate("found_spring_date.dat");
+	springDate << "YYYY\t" << "MM\t" << "D\t" << "\t-\t" << "Temp(C)" << endl;
+	springDate << "============================" << endl;
 	string line;
 	//Loop for reading file
 	while(file.good())
@@ -82,6 +85,7 @@ void tempTrender::springArrive(int dataset){
 								hTemp->Fill(sTemp);
 								//Print date of spring
 								cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << sTemp << endl;
+								springDate << sYear << "\t" << sMonth << "\t" << sDay << "\t-\t" << sTemp << endl;
 							}
 						}
 						else //If temperature is not in interval, start new iteration
@@ -90,6 +94,7 @@ void tempTrender::springArrive(int dataset){
 				}
 			}
 	}
+	springDate.close();
 	file.close();
 	//Draw extracted data
 	TCanvas* can = new TCanvas("canSpringDay", "Spring day", 900, 600);
