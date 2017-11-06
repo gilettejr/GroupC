@@ -18,7 +18,7 @@ void tempTrender::springArrive(int dataset){
 	}
 	//Histograms
 	TH1I *hDays = new TH1I("h1","Spring hist;Day;Entries", 365, 1, 365); //Histogram of days
-	TH1D *hTemp = new TH1D("Entry", "Temperature on first day of spring;Temperature[#circC];Entries", 30, 0, 10); //Histogram of temps
+	TH1D *hTemp = new TH1D("Entry", "Temperature on first day of spring;Temperature[#circC];Entries", 10, 0, 10); //Histogram of temps
 	hDays->SetFillColor(kRed +1);
 	hTemp->SetFillColor(kBlue+1);
 	//Variables for reading and storing data
@@ -74,14 +74,15 @@ void tempTrender::springArrive(int dataset){
 						//dayCount>=46 represent 15 feb (minimum date for spring), month<8 remove missing data (otherwise autumn is classified as spring)
 						if(temp_urban >= 0 && temp_urban <= 10 && dayCount >= 46 && month < 8) //Check if temp fulfill definition of spring
 						{
-							if(i==0){
+							if(i==0)
+							{
 								sYear=year; sMonth=month; sDay=day;
 								sTemp=temp_urban;
 							}
 							if(i == daysWeek-1) //Save temp of first day
 							{
 								foundSpring = true;
-								hDays->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), dayCount incremented by 1 previously
+								hDays->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), +1 because dayCount incremented by 1 previously
 								hTemp->Fill(sTemp);
 								//Print date of spring
 								cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << sTemp << endl;
@@ -104,7 +105,7 @@ void tempTrender::springArrive(int dataset){
 	hTemp->SetMinimum(0);
 	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
-	TF1* fitExp = new TF1("Exponential", "[1]*[0]*exp(-[0]*x)", 0, 10);
+	TF1* fitExp = new TF1("Exponential", "[1]*exp(-[0]*x)", 0, 10);
 	fitExp->SetParameters(0,1);
 	fitExp->SetParameters(1,100);
 	hTemp->Fit(fitExp);
