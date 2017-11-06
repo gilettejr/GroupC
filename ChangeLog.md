@@ -9,3 +9,6 @@ binning of histograms and updating the fitted function for better
 results. Two new figures added to the report, one for the histogram of 
 spring days and another for the temperature. Included is a fitted 
 exponential function of the temperature histogram. 
+[2017-11-06]Function tempreal(int iday, int imonth) created which takes
+in day and month as input, and writes adjusted average temperature
+for this date for each year to a file, templist.dat, and to a vector
