@@ -74,14 +74,15 @@ void tempTrender::springArrive(int dataset){
 						//dayCount>=46 represent 15 feb (minimum date for spring), month<8 remove missing data (otherwise autumn is classified as spring)
 						if(temp_urban >= 0 && temp_urban <= 10 && dayCount >= 46 && month < 8) //Check if temp fulfill definition of spring
 						{
-							if(i==0){
+							if(i==0)
+							{
 								sYear=year; sMonth=month; sDay=day;
 								sTemp=temp_urban;
 							}
 							if(i == daysWeek-1) //Save temp of first day
 							{
 								foundSpring = true;
-								hDays->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), dayCount incremented by 1 previously
+								hDays->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), +1 because dayCount incremented by 1 previously
 								hTemp->Fill(sTemp);
 								//Print date of spring
 								cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << sTemp << endl;
@@ -102,11 +103,14 @@ void tempTrender::springArrive(int dataset){
 	hDays->Draw();
 	TCanvas* can2 = new TCanvas("canSpringDayTemp", "Temperature on first spring day", 900, 600);
 	hTemp->SetMinimum(0);
-	hTemp->Draw("");
+	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
-	TF1* fitExp = new TF1("Exponential", "[1]*[0]*exp(-[0]*x)", 0, 10);
+	TF1* fitExp = new TF1("Exponential", "[1]*exp(-[0]*x)", 0, 10);
 	fitExp->SetParameters(0,1);
 	fitExp->SetParameters(1,100);
 	hTemp->Fit(fitExp);
+	//Save figures
+	can->SaveAs("springArrive_dayHist.jpg");
+	can2->SaveAs("springArrive_tempHist.jpg");
 }
 

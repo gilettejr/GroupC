@@ -3,7 +3,14 @@
 \usepackage{a4wide}
 \usepackage[utf8]{inputenc}
 \usepackage{standalone} %Standalone help compile each input file.
-\usepackage{graphicx,wrapfig,subfig}
+\usepackage{graphicx,wrapfig,subfig, listings}
 \usepackage{caption,url,amsmath,bm,mathtools}
 \usepackage[parfill]{parskip}
 \parindent=0.6cm
+
+% For listing environment
+\lstset{
+basicstyle=\small\ttfamily,
+columns=flexible,
+breaklines=true
+}
