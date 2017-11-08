@@ -108,9 +108,9 @@ void tempTrender::springArrive(int dataset){
 	hTemp->SetMinimum(0);
 	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
-	TF1* fitExp = new TF1("Exponential", "[1]*exp(-[0]*x)", 0, 10);
-	fitExp->SetParameters(0,1);
-	fitExp->SetParameters(1,100);
+	TF1* fitExp = new TF1("Exponential", "[0]*exp(-[1]*x)", 0, 10);
+	fitExp->SetParameters(0,100);
+	fitExp->SetParameters(1,1);
 	hTemp->Fit(fitExp);
 	//Save figures
 	can->SaveAs("springArrive_dayHist.jpg");
