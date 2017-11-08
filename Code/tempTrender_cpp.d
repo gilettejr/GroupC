@@ -43,7 +43,9 @@
 ./tempTrender_cpp.so: /usr/include/root/GuiTypes.h
 ./tempTrender_cpp.so: /usr/include/root/Buttons.h
 ./tempTrender_cpp.so: /usr/include/root/TQObject.h
+./tempTrender_cpp.so: /usr/include/root/TAttBBox2D.h
+./tempTrender_cpp.so: /usr/include/root/TPoint.h
 ./tempTrender_cpp.so: /usr/include/root/TAttCanvas.h
 ./tempTrender_cpp.so: /usr/include/root/TCanvasImp.h
 ./tempTrender_cpp.so: /usr/include/root/cintdictversion.h /usr/include/root/RVersion.h
-tempTrender_cpp__ROOTBUILDVERSION= 5.34/14
+tempTrender_cpp__ROOTBUILDVERSION= 5.34/30
