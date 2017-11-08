@@ -1,12 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
-//~ #include <TF1.h>
-//~ #include <TH1.h>
+#include <TH1.h>
 //~ #include <TStyle.h>
 //~ #include <TMath.h>
-//~ #include <TCanvas.h>
+#include <TCanvas.h>
 
 using namespace std;
 int year;
@@ -16,10 +14,9 @@ float obsT;
 float corrT;
 int location;
 
-int main() {
+void tempPerDay() {
 
-	ifstream datafile("uppsala_tm_1722-2013.dat");
-	//int i = 0;
+	ifstream datafile("../datasets/uppsala_tm_1722-2013.dat");
 	vector<int> vday;
 	vector<int> vmonth;
 	vector<int> vyear;
@@ -34,29 +31,33 @@ int main() {
 		if (year == 1722){
 			continue;
 		}
+		
 		vyear.push_back(year);
 		vmonth.push_back(month);
 		vday.push_back(day);
 		vtemp.push_back(corrT);
 		vloc.push_back(location);
-		
-		//i=i+1;
 	}
+	
+	int daycounter = 0;
+	int yr_it = 0;
 
 
-//TH1D* tempHist = new TH1D("tempHist", "Temperature of every day of the year",365,0,365);
-//1D histogram of type double, (name, title, nBins, xMin, xMax)
+	TH1D* tempHist = new TH1D("tempHist", "Temperature of every day of the year",365,0,365);
 
-	int d, m, y, l;
-	float t;
-	int daycounter=0;
+	vector<float> sumtempvec;
+	for (int p=0; p<365;p++){
+		sumtempvec.push_back(0);
+	}
  
-	for (int k=0; k < vyear.size(); k++){
-		d = vday.at(k);
-		m = vmonth.at(k);
-		y = vyear.at(k);
-		t = vtemp.at(k);
-		l = vloc.at(k);
+	for (UInt_t k=0; k < vyear.size(); k++){
+	//-------------------------------
+		//~ day = vday.at(k);
+		//~ month = vmonth.at(k);
+		//~ year = vyear.at(k);
+		//~ corrT = vtemp.at(k);
+		//~ location = vloc.at(k);
+	//---------------------------------
 		
 		//special case for the last date, otherwise vyear.at(k+1) is undefined (2014-01-01 is not part of the data)
 		if (vyear.at(k) == 2013 && vmonth.at(k) == 12 && vday.at(k) == 31){
@@ -73,21 +74,30 @@ int main() {
 			daycounter = daycounter+1;
 		}
 		
-		cout << y << "  " << m << "  " << d << "  " <<"  "<< k << "  " << daycounter <<endl;
+		//~ cout << vyear.at(k) << "  " << vmonth.at(k) << "  " << vday.at(k) << "  " <<"  "<< k << "  " << daycounter <<endl;
+		sumtempvec.at(daycounter-1)=sumtempvec.at(daycounter-1) + vtemp.at(k);
 		
 		//if the daycounter has reached 365, it's a new year and the daycounter must be reset
 		if (daycounter == 365){
 			daycounter = 0;
+			yr_it = yr_it +1;
 		}
 	}
+	//~ double sd=0; 	//will store standard deviation
+	
+	for (UInt_t q=0;q<sumtempvec.size();q++){
+		sumtempvec.at(q) = sumtempvec.at(q)/(yr_it);
+		//~ cout << q << "  " << sumtempvec.at(q) << endl;
+	}
 
-
-//tempHist->Draw();
+	for (int bin = 1; bin <= tempHist->GetNbinsX(); ++bin){
+		tempHist->SetBinContent(bin,sumtempvec[bin-1]);
+		//~ tempHist->SetBinError(bin, /standard deviation/ );
+	}
+	
+	TCanvas *c1 = new TCanvas("c1","Mean temperature for each day of the year", 900,600);
+	
+	tempHist->Draw();
+	c1->SaveAs("TempPerDay.jpg");
+	
 }
-
-/*
-Left to do:
-adapt to ROOT
-exclude data values from location != 1
-means -> fill histogram
-*/
