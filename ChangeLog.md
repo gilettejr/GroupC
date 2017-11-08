@@ -12,3 +12,4 @@ exponential function of the temperature histogram.
 [2017-11-06]Function tempreal(int iday, int imonth) created which takes
 in day and month as input, and writes adjusted average temperature
 for this date for each year to a file, templist.dat, and to a vector
+[2017-11-07]Began histrogram code, also created Cameron.tex
