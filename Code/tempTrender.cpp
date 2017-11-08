@@ -16,11 +16,12 @@ void tempTrender::springArrive(int dataset){
 		cout << "Incorrect call of springArrive\n";
 		exit(1);
 	}
+	// Set ROOT drawing styles
+	gStyle->SetOptStat(1111);
+	gStyle->SetOptFit(1111);
 	//Histograms
 	TH1I *hDays = new TH1I("h1","Spring hist;Day;Entries", 365, 1, 365); //Histogram of days
 	TH1D *hTemp = new TH1D("Entry", "Temperature on first day of spring;Temperature[#circC];Entries", 10, 0, 10); //Histogram of temps
-	hDays->SetFillColor(kRed +1);
-	hTemp->SetFillColor(kBlue+1);
 	//Variables for reading and storing data
 	Int_t dayCount = 12; //Starting point in Uppsala data set
 	Int_t daysWeek = 7;
@@ -99,9 +100,11 @@ void tempTrender::springArrive(int dataset){
 	file.close();
 	//Draw extracted data
 	TCanvas* can = new TCanvas("canSpringDay", "Spring day", 900, 600);
+	hDays->SetFillColor(kRed +1);
 	hDays->SetMinimum(0);
 	hDays->Draw();
 	TCanvas* can2 = new TCanvas("canSpringDayTemp", "Temperature on first spring day", 900, 600);
+	hTemp->SetFillColor(kBlue+1);
 	hTemp->SetMinimum(0);
 	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
