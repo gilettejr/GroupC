@@ -43,6 +43,8 @@ vector<int> vid;
 //vector to fill the histogram
 
 vector<double> vhist;
+vector<double> vhist2;
+vector<double> vhist3;
 
 //conditional to prevent programming from continuing if instream fails
 
@@ -70,25 +72,41 @@ while (myfile >> year >> month >> day >> untemp >> temp >> id) {
 myfile.close();
 
 //output file created
-
+ofstream outfile("templist3.dat");
+ofstream oufile("templist2.dat");
 ofstream ofile("templist.dat");
 
 //loop to pick out data for inputted month and day, for every year
 
 
-for (int i=0;i<vtemps.size();i++) {
+for (int i=0;i<30000;i++) {
 	
 	if ((vday[i] == inday&& vmonth[i]==inmonth && vid[i]==1))
 		ofile<<vtemps[i]<<endl;
 	}
 	
+for (int a=30000;a<60000;a++) {
+	
+	if ((vday[a] == inday&& vmonth[a]==inmonth && vid[a]==1))
+		oufile<<vtemps[a]<<endl;
+	}
+
+for  (int b=60000; b<vtemps.size();b++) 
+
+if ((vday[b] == inday&& vmonth[b]==inmonth && vid[b]==1))
+		outfile<<vtemps[b]<<endl;
+	
+	
 //output file closed
 	
 	ofile.close();
+	oufile.close();
+	outfile.close();
 	
 //this file now used as input file
 	
 	ifstream ifile ("templist.dat");
+	
 //vector vtemp filled with values to fill the graph
 	double ftemp;
 	
@@ -96,6 +114,27 @@ for (int i=0;i<vtemps.size();i++) {
 		
 		vhist.push_back(ftemp);
 		
+	}
+	
+	ifstream infile ("templist2.dat");
+	
+//vector vtemp filled with values to fill the graph
+	double ftemp2;
+	
+	while (infile >> ftemp2) {
+		
+		vhist2.push_back(ftemp2);
+		
+	}
+	
+	ifstream innfile ("templist3.dat");
+	
+//vector vtemp filled with values to fill the graph
+	double ftemp3;
+	
+	while (innfile >> ftemp3) {
+		
+		vhist3.push_back(ftemp3);
 	}
 	
 	//cout<<vhist[23];//simple testing output
@@ -110,7 +149,33 @@ double mean = hist->GetMean();
 double stdev = hist->GetRMS();
 TCanvas* can = new TCanvas();
 hist->Draw();
-can->SaveAs("2week.jpg");
+can->SaveAs("1.jpg");
+
+gStyle->SetOptStat(1111);
+ gStyle->SetOptFit(1111);
+TH1I* hist2 = new TH1I("day, month", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
+hist2->SetFillColor(kRed + 1);
+for(int k=0;k<vhist2.size();k++) {
+hist2->Fill(vhist2[k]);
+}
+double mean2 = hist2->GetMean();
+double stdev2 = hist2->GetRMS();
+TCanvas* can2 = new TCanvas();
+hist2->Draw();
+can2->SaveAs("2.jpg");
+
+gStyle->SetOptStat(1111);
+ gStyle->SetOptFit(1111);
+TH1I* hist3 = new TH1I("day, month", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
+hist3->SetFillColor(kRed + 1);
+for(int k=0;k<vhist3.size();k++) {
+hist3->Fill(vhist3[k]);
+}
+double mean3 = hist3->GetMean();
+double stdev3 = hist3->GetRMS();
+TCanvas* can3 = new TCanvas();
+hist3->Draw();
+can3->SaveAs("3.jpg");
 		
 		
 
