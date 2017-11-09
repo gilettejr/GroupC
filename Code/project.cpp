@@ -8,9 +8,7 @@ void project() {
 	tempTrender t(pathToFile); //Instantiate your analysis object
 	t.springArrive(1); //Find average day of spring
 	t.getSpring("2012"); //Get date of spring arrival for specific year
-	t.tempOnDay(8, 23); //Call some functions that you've implemented
-	t.getSpring("2012"); //Get date of spring arrival for specific year
-	t.tempOnDay(21, 3); //Call some functions that you've implemented
+	t.tempOnDay(23, 8); //Call some functions that you've implemented
 	//t.tempOnDay(235);
 	//t.tempPerDay();
 	//t.hotCold();

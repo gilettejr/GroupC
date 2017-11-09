@@ -1,5 +1,8 @@
 // function tempPerDay()
 //-----------------------
+
+#include "tempTrender.h"
+
 #include <fstream>
 #include <vector>
 #include <TH1.h>
@@ -8,7 +11,7 @@
 #include <TMath.h>
 using namespace std;
 
-void tempPerDay() {
+void tempTrender::tempPerDay() {
 	int year;
 	int month;
 	int day;
