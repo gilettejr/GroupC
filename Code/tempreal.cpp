@@ -29,7 +29,7 @@ if(inmonth>12)
 cout<<"Error, invalid month'n";
 //opens necessary infile for streaming
 
-ifstream myfile ("/home/courseuser/Project/Project/datasets/uppsala_tm_1722-2013.dat");
+ifstream myfile ("../datasets/uppsala_tm_1722-2013.dat");
 
 //double variables declared for data in each column of original set
 
