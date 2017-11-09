@@ -1,0 +1,120 @@
+\documentclass[a4paper,12pt,twoside]{article}
+\usepackage{mypackage}
+
+\begin{document}
+ \section{Calculating the mean temperatures of every day of the year}
+ \label{sec:3.2}
+ How does the temperature change over the course of a year? Recording the temperature
+ every day for one year might give some indication, but leaves a large margin of error.
+ With a dataset stretching almost three hundred years we can calculate the mean
+ temperature of each day and get a much more reliable result.
+ 
+ The mean temperature of a certain day is the sum of the temperatures recorded at
+ that day, divided by the number of days it has been recorded:
+ \begin{equation}
+  \label{eq:MeanTempPerDay}
+  \overline{T(day 1)} = \frac{T(day 1, year 1)+T(day 1, year 2)+...+T(day 1, year N)}{N}
+ \end{equation} 
+  
+ 
+ Reading from the datafile, each datatype was put in a vector (excluding the year
+ 1722 since we don't have all the data for that year, and the 29th of february for
+ simplicity). We now have the data in vectors of equal length $(2013-1722)\times(365)=106215$,
+ where the data in the same position in the vectors correlate.
+ 
+ Next, the data needed to be separated according to which year it belonged. An empty
+ vector of length 365 was created, and then (using a for-loop) the temperature belonging
+ to day $k$ was added to the $(k-1)$:th position in the vector (excluding the data not from
+ Uppsala. The number of times this summation happened was also recorded (it should be
+ equal to the number of years, $291$).
+ 
+ \begin{verbatim}
+  	//loop for calculating the mean temperatures of each day
+	for (UInt_t k=0; k < vyear.size(); k++){
+	
+	...
+	
+	//for a new year
+	else if (vyear.at(k) != vyear.at(k+1)){
+		daycounter = 365;
+	}
+	
+	//for the same year,
+	    the daycounter is that of the previous iteration + 1
+	else if (vyear.at(k) == vyear.at(k+1)){
+		daycounter = daycounter+1;
+	}
+	
+	sumtempvec.at(daycounter-1)
+	          =sumtempvec.at(daycounter-1) + vtemp.at(k);
+	
+	...
+	
+	if (daycounter == 365){
+		daycounter = 0;
+		yr_it = yr_it +1; //the number of years we've iterated over
+	}
+	}
+ \end{verbatim}
+ Using another for-loop to divide each element of the vector with the number of years,
+ we now had a vector where each element was the mean temperature of the day
+ corresponding to the element's position.
+ 
+ \bigskip
+ The standard deviation is defined as 
+  \begin{equation}
+ \label{eq:StdDev}
+ \sigma = \sqrt{\frac{\sum\limits_{i=1}^{n} (t_{i}-\bar{t})^2}{n-1}}
+ \end{equation}
+ 
+ The mean temperature of each day $\bar{t}$ had been calculated as above, and now another 
+ empty vector of length 365 was created. In the same way as before, we looped over the vectors
+ containing the data, this time putting the square of the sum of the differences between the
+ temperature of the current iteration and the mean temperature of the current day in the vector:
+ 
+ \begin{verbatim}
+    	...
+  	//put the difference between the temperature and the mean
+  	        temperature squared in a vector
+  	vStdDev.at(daycounter-1) +=
+  	    (vtemp.at(k)-sumtempvec.at(daycounter-1))*
+  	    (vtemp.at(k)-sumtempvec.at(daycounter-1));
+  	
+  	...
+  	
+  	//calculating the standard deviation for each day
+	for (UInt_t q=0;q<vStdDev.size();q++){
+		vStdDev.at(q) = TMath::Sqrt(vStdDev.at(q)/(yr_it-1));
+	}
+ \end{verbatim}
+
+ 
+ After the iteration we therefore had ${\sum\limits_{i=1}^{n} (t_i - \bar{t})}^2$. Using another for-loop, each element in the vector
+ was then divided by the number of years ($n$) in the same way as before, and the square root of these values was
+ calculated, to get the standard deviation for each day of the year.
+ 
+ \begin{verbatim}
+  	//calculating the standard deviation for each day
+	for (UInt_t q=0;q<vStdDev.size();q++){
+		vStdDev.at(q) = TMath::Sqrt(vStdDev.at(q)/(yr_it-1));
+	}
+ \end{verbatim}
+ Finally we had two vectos, one containing the mean temperatures of each day, and the other
+ containing the standard deviation, where the position in the vector correlated to the day
+ of a year. Using yet another for-loop, the elements in the two vectors were set to be the
+ bin content and the bin errors in a histogram. This produced the histogram shown in
+ figure \ref{fig:tempPerDay}.
+ 
+ \begin{figure}[h]
+  \begin{center}
+   \includegraphics[width=15cm]{../Code/tempPerDay.jpg}
+   \caption{Histogram showing the mean temperature of every day of the year}
+   \label{fig:tempPerDay}
+  \end{center}
+ \end{figure}
+ 
+ 
+\end{document}
+
+
+
