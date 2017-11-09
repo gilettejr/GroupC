@@ -32,6 +32,7 @@ class tempTrender {
 	//void hotCold(); //Make a histogram of the hottest and coldest day of the year
 	//void tempPerYear(int yearToExtrapolate); //Make a histogram of average temperature per year, then fit and extrapolate to the given year
 	void springArrive(int dataset);
+	void getSpring(string year);
 	
 	private:
 	string filePath_;

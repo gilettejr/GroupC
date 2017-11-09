@@ -7,7 +7,8 @@ tempTrender::tempTrender(string filePath) {
 
 
 //Determine at what date the average temperature is above 0 and below 10
-//Function for reading temperature values to vector temp_vec
+//marking the beginning of spring acording to SMHI:s meterological definition
+//Function writes found dates in file "found_spring_date.dat"
 //Only work for "uppsala_tm_1722_2013.dat" file
 void tempTrender::springArrive(int dataset){
 	//Check input
@@ -47,7 +48,7 @@ void tempTrender::springArrive(int dataset){
 		if(foundSpring == true)
 		{
 			dayCount = 0;
-			foundSpring = false;
+			foundSpring = false;			
 			Int_t nextYear = year+1;
 			while(nextYear != year)
 			{
@@ -101,11 +102,11 @@ void tempTrender::springArrive(int dataset){
 	//Draw extracted data
 	TCanvas* can = new TCanvas("canSpringDay", "Spring day", 900, 600);
 	hDays->SetFillColor(kRed +1);
-	hDays->SetMinimum(0);
+	//hDays->SetMinimum(0);
 	hDays->Draw();
 	TCanvas* can2 = new TCanvas("canSpringDayTemp", "Temperature on first spring day", 900, 600);
 	hTemp->SetFillColor(kBlue+1);
-	hTemp->SetMinimum(0);
+	//hTemp->SetMinimum(0);
 	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
 	TF1* fitExp = new TF1("Exponential", "[0]*exp(-[1]*x)", 0, 10);
@@ -117,3 +118,25 @@ void tempTrender::springArrive(int dataset){
 	can2->SaveAs("springArrive_tempHist.jpg");
 }
 
+//Get the date and temperature of the day spring started in year "year"
+//If the supplied year is not found, a error message is given
+void tempTrender::getSpring(string year){
+	ifstream fp("found_spring_date.dat");
+	string sYear, sMonth, sDay, sTemp, tmp;
+	if(fp)
+	{
+		for(int i=0;i<2;i++) getline(fp,tmp);
+		while(year.compare(sYear) != 0 && !fp.eof()){fp >> sYear >> sMonth >> sDay >> tmp >> sTemp;}
+		if(year.compare(sYear) == 0)
+			cout << "Spring in " << year << " arrived " << sDay << "/" 
+				<< sMonth << " with a average temperature of " << sTemp << endl;
+		else
+			cout << "No data found for year " << year << endl;
+	}
+	else
+	{
+		cout << "File " << "'found_spring_date.dat'" << " not found" << endl;
+		exit(1);
+	}
+	fp.close();
+}
