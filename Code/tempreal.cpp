@@ -101,7 +101,7 @@ for (int i=0;i<vtemps.size();i++) {
 	//cout<<vhist[23];//simple testing output
 gStyle->SetOptStat(1111);
  gStyle->SetOptFit(1111);
-TH1I* hist = new TH1I("inday inmonth", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
+TH1I* hist = new TH1I("day, month", "Temperature;Temperature[#circC];Entries", 300, -20, 40);
 hist->SetFillColor(kRed + 1);
 for(int k=0;k<vhist.size();k++) {
 hist->Fill(vhist[k]);
@@ -110,7 +110,7 @@ double mean = hist->GetMean();
 double stdev = hist->GetRMS();
 TCanvas* can = new TCanvas();
 hist->Draw();
-can->SaveAs("Equinox_temps.jpg");
+can->SaveAs("2week.jpg");
 		
 		
 
