@@ -23,7 +23,10 @@ using namespace std;
 void tempreal(int inday, int inmonth)
 
 {
-
+if(inday>31)
+cout << "Error, invalid day\n";
+if(inmonth>12)
+cout<<"Error, invalid month'n";
 //opens necessary infile for streaming
 
 ifstream myfile ("/home/courseuser/Project/Project/datasets/uppsala_tm_1722-2013.dat");
@@ -149,7 +152,7 @@ double mean = hist->GetMean();
 double stdev = hist->GetRMS();
 TCanvas* can = new TCanvas();
 hist->Draw();
-can->SaveAs("1.jpg");
+can->SaveAs("one.jpg");
 
 gStyle->SetOptStat(1111);
  gStyle->SetOptFit(1111);
@@ -162,7 +165,7 @@ double mean2 = hist2->GetMean();
 double stdev2 = hist2->GetRMS();
 TCanvas* can2 = new TCanvas();
 hist2->Draw();
-can2->SaveAs("2.jpg");
+can2->SaveAs("two.jpg");
 
 gStyle->SetOptStat(1111);
  gStyle->SetOptFit(1111);
@@ -175,7 +178,7 @@ double mean3 = hist3->GetMean();
 double stdev3 = hist3->GetRMS();
 TCanvas* can3 = new TCanvas();
 hist3->Draw();
-can3->SaveAs("3.jpg");
+can3->SaveAs("three.jpg");
 		
 		
 
