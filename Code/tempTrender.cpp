@@ -102,11 +102,9 @@ void tempTrender::springArrive(int dataset){
 	//Draw extracted data
 	TCanvas* can = new TCanvas("canSpringDay", "Spring day", 900, 600);
 	hDays->SetFillColor(kRed +1);
-	//hDays->SetMinimum(0);
 	hDays->Draw();
 	TCanvas* can2 = new TCanvas("canSpringDayTemp", "Temperature on first spring day", 900, 600);
 	hTemp->SetFillColor(kBlue+1);
-	//hTemp->SetMinimum(0);
 	hTemp->Draw();
 	//Define and fit exponential function to temperature histogram
 	TF1* fitExp = new TF1("Exponential", "[0]*exp(-[1]*x)", 0, 10);
