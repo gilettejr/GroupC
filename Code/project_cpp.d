@@ -33,8 +33,7 @@
 ./project_cpp.so: /usr/include/root/TVirtualPad.h /usr/include/root/TAttPad.h
 ./project_cpp.so: /usr/include/root/TVirtualX.h /usr/include/root/GuiTypes.h
 ./project_cpp.so: /usr/include/root/Buttons.h /usr/include/root/TQObject.h
-./project_cpp.so: /usr/include/root/TAttBBox2D.h /usr/include/root/TPoint.h
 ./project_cpp.so: /usr/include/root/TAttCanvas.h
 ./project_cpp.so: /usr/include/root/TCanvasImp.h
 ./project_cpp.so: /usr/include/root/cintdictversion.h /usr/include/root/RVersion.h
-project_cpp__ROOTBUILDVERSION= 5.34/30
+project_cpp__ROOTBUILDVERSION= 5.34/14
