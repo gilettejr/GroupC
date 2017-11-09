@@ -16,7 +16,7 @@ void tempPerDay() {
 	float corrT;
 	int location;
 
-	ifstream datafile("uppsala_tm_1722-2013.dat");
+	ifstream datafile("../datasets/uppsala_tm_1722-2013.dat");
 	vector<int> vday;
 	vector<int> vmonth;
 	vector<int> vyear;
