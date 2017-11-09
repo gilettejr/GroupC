@@ -132,11 +132,11 @@ void tempTrender::getSpring(string year){
 				<< sMonth << " with a average temperature of " << sTemp << endl;
 		else
 			cout << "No data found for year " << year << endl;
+		fp.close();
 	}
 	else
 	{
 		cout << "File " << "'found_spring_date.dat'" << " not found" << endl;
 		exit(1);
 	}
-	fp.close();
 }
