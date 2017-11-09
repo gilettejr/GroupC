@@ -1,12 +1,12 @@
 \documentclass[a4paper,10pt,oneside]{article}
 
 %\usepackage{ucs}
-\usepackage[utf8]{inputenc}
+%\usepackage[utf8]{inputenc}
 %\usepackage{babel}
 %\usepackage{fontenc}
-\usepackage[pdftex]{graphicx}
+%\usepackage[pdftex]{graphicx}
 
-\usepackage[dvips,pdftex]{hyperref}
+\usepackage{mypackages}
 
 \author{Cameron Robertson}
 \date{11/09/17}
@@ -22,7 +22,7 @@ temperatures from 1722 until 2013. Each histogram will show data for a specific 
 so it may be enlightening to look at all 366 potential histograms, though this would
 not be practical. Instead, a few specific dates will be chosen to analyse the histogram
 distribution. It will then be determined how useful these results will be in determining the beginning
-of Spring.
+of Spring, and also how much temperatures have changed in the last three hundred years.
 
 \section{Extracting the data}
 \label{sec:data}
@@ -43,9 +43,11 @@ vector, which was then used to plot the histogram
 \section{Results and Discussion}
 \label{sec:res}
 
-\begin{figure} 
+Results from the tempreal(inday,inmonth) function follow
+
+\begin{figure}[!ht]
   \begin{center}
-    \includegraphics[width=10cm]{/home/courseuser/Project/Project/Code/Equinox_temps.jpg}
+    \includegraphics[width=5cm]{/home/courseuser/Project/Project/Code/Equinox_temps.jpg}
     \caption{Histogram showing temperatures from 1722-2013 at 21.3}
     \label{fig:vern}
   \end{center}
@@ -58,8 +60,8 @@ shown in \ref{fig:vern} displays just how much variation in temperature there is
 The range is also expectedly quite large, owing to the large quantity of data. Also, there have been several cases of extremely
 cold temperatures, which could have altered the mean.
 
-\begin{figure}
- \includegraphics[width=10cm]{/home/courseuser/Project/Project/Code/week.jpg}
+\begin{figure}[!ht]
+ \includegraphics[width=5cm]{/home/courseuser/Project/Project/Code/week.jpg}
  \caption{Histogram showing temperatures from 1722-2013 at 30.3}
  \label{fig:week}
 \end{figure}
@@ -69,8 +71,8 @@ after just one week, with the mean temperature now being above freezing. Notably
 has also decreased slightly, so the spread of results for this day is slightly lower than on the previous histogram, though is
 still quite high.
 
-\begin{figure}
- \includegraphics[width=10cm]{/home/courseuser/Project/Project/Code/2week.jpg}
+\begin{figure}[!ht]
+ \includegraphics[width=5cm]{/home/courseuser/Project/Project/Code/2week.jpg}
  \caption{Histogram showing temperatures from 1722-2013 at 6.3}
  \label{fig:twoweek}
 \end{figure}
@@ -79,15 +81,45 @@ The same trend continues one week on from this, as shown by \ref{fig:twoweek}. T
 , though by a smaller value this time. Most notably, the spread of data has decreased, resulting in a visibly thinner histogram, resulting
 in a lower standard deviation.
 
+\section{Results for Progression}
+\label{sec:prog}
+
+There has clearly been quite some variation of the mean temperature on a certain day within
+this time period. By seperating the data into three vectors and plotting these seperately, an increase
+in mean temperature can be seen in the last hundred years.
+\begin{figure}[!ht]
+ \includegraphics[width=5cm]{/home/courseuser/Project/Project/Code/1.jpg}
+ \caption{Histogram showing temperatures from 1722 to approx 1820, on 21.3}
+ \label{fig:one}
+\end{figure}
+
+\begin{figure}[!ht]
+ \includegraphics[width=5cm]{/home/courseuser/Project/Project/Code/2.jpg}
+ \caption{Histogram showing temperatures from approx 1820 to approx 1920, on 21.3}
+ \label{fig:two}
+\end{figure}
+
+\begin{figure}[!ht]
+ \includegraphics[width=5cm]{/home/courseuser/Project/Project/Code/3.jpg}
+ \caption{Histogram showing temperatures from approx 1920 to 2013, on 21.3}
+ \label{fig:three}
+\end{figure}
+
+While the mean temperature is approximately the same between the first two time periods
+shown, there is a clear increase in mean temperature in the last hundred years. Whilst the graphs
+shown are just for 21st March, this trend is seen on all days tested.
+
+
 \section{Conclusion}
 \label{sec:conc}
 
-The results show that the large amount of data nevertheless still shows the expected trend of increasing temperature from week
+The results show that the large amount of data nevertheless still shows the expected trend of increasing temperature through a year from week
 to week, despite large standard deviation and recurring data from very cold years, which can be seen on
 the left side of all the histograms. Theoretically, it would be possible to find the mean warmest and coldest day between 1722-2013,
 but this would require repeatedly running the aforementioned function until the minimum and maximum values were found
 It would also be difficult to determine the beginning of Spring(Using the temperature definition) using this program,
-as a similar brute force method would be required, and it would be difficult to plot the results.
+as a similar brute force method would be required, and it would be difficult to plot the results. Furthermore, seperating
+the data also allowed a clear increase in mean temperature to be seen in the last hundred years.
 
 
 
