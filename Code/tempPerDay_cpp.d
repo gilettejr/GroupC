@@ -25,16 +25,17 @@
 ./tempPerDay_cpp.so: /usr/include/root/TVectorFfwd.h
 ./tempPerDay_cpp.so: /usr/include/root/TVectorDfwd.h
 ./tempPerDay_cpp.so: /usr/include/root/TFitResultPtr.h
+./tempPerDay_cpp.so: /usr/include/root/TStyle.h /usr/include/root/TAttText.h
 ./tempPerDay_cpp.so: /usr/include/root/TCanvas.h /usr/include/root/TPad.h
 ./tempPerDay_cpp.so: /usr/include/root/TVirtualPad.h
 ./tempPerDay_cpp.so: /usr/include/root/TAttPad.h
 ./tempPerDay_cpp.so: /usr/include/root/TVirtualX.h
-./tempPerDay_cpp.so: /usr/include/root/TAttText.h
 ./tempPerDay_cpp.so: /usr/include/root/GuiTypes.h /usr/include/root/Buttons.h
 ./tempPerDay_cpp.so: /usr/include/root/TQObject.h
 ./tempPerDay_cpp.so: /usr/include/root/TAttBBox2D.h
 ./tempPerDay_cpp.so: /usr/include/root/TPoint.h
 ./tempPerDay_cpp.so: /usr/include/root/TAttCanvas.h
-./tempPerDay_cpp.so: /usr/include/root/TCanvasImp.h
+./tempPerDay_cpp.so: /usr/include/root/TCanvasImp.h /usr/include/root/TMath.h
+./tempPerDay_cpp.so: /usr/include/root/TError.h
 ./tempPerDay_cpp.so: /usr/include/root/cintdictversion.h /usr/include/root/RVersion.h
 tempPerDay_cpp__ROOTBUILDVERSION= 5.34/30
