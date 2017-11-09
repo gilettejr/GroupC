@@ -5,8 +5,8 @@
 \section{Calculating the start of spring}
 In order to properly calculate at which date spring starts, a 
 definition for the season is necessary. On the webpage of SMHI 
-https://www.smhi.se/kunskapsbanken/meteorologi/var-1.1080
-a meteorological definition of spring is given. Below is given the 
+(https://www.smhi.se/kunskapsbanken/meteorologi/var-1.1080)
+a meteorological definition of spring is given. Below is the 
 definition of the start of spring from SMHI.
 
 \hfill\begin{minipage}[c]{\textwidth-2cm}
@@ -19,6 +19,10 @@ definition of the start of spring from SMHI.
 	$\ldots$
 	\newline
 	The start of spring can not occur before the 15th of febuary.
+	\newline
+	$\ldots$
+	\newline
+	Spring can, at latest, occur the 31th of July.
 \end{minipage}
 
 \noindent Using this definition, the temperature for spring arrival was 
@@ -29,12 +33,13 @@ arrival. The choice of using a single method is one of them. The inital
 set of lines of "springArrive()" initialize variables that will be used 
 when reading the data file "uppsala\_tm\_1722-2013.dat".
 \\\indent
-No exact definition of when spring end and autumn begin was found, 
-which, allowed dates as late as november to be classified as the 
-beginning of spring. For this reason, we define spring to start at 
-latest in July. The beginning of spring may change a lot depending on 
+The exact date for when each season start and end are not fixt and may 
+vary a lot between each year. Using only the first paragraph of the 
+above definition dates as late as november could be classified as the 
+beginning of spring. For this reason, we use the last of July as a 
+cutoff point. The beginning of spring may change a lot depending on 
 location. The definition used here was found most promising for the 
-data of Uppsala. 
+data set of Uppsala. 
 
 The main part of the springArrive() method occur in the while loop. It 
 can be summarized in two parts. First check if the spring of the 
@@ -69,12 +74,13 @@ required by the definition above. The id of the data is checked with
 the provided "dataset" variable so to  ensure only data from the 
 correct data set is stored. Next, the temperature is examined, it has 
 to be between 0 $^\circ$C and 10$^\circ$C. dayCount represent the 
-current date of the year, regardless of data set. This remove cases 
-where data points might be missing. As a final requirement, the month 
-can at most represent July. At the final iteration the first registered 
-date and temperature is stored. Note the method does not divide the 
-year into 52 weeks but instead look for the first 7 succeeding 
-iterations which satisfy the definition we use.
+total number of dates iterated of the year, regardless of id number. 
+This ensures that spring will be identified even if data points might 
+be missing. As a final requirement, the month can not exceed July, in 
+line with the definition of SMHI. At the final iteration of the for 
+loop, the first registered date and temperature is stored. Note the 
+method does not divide the year into 52 weeks but instead look for the 
+first 7 succeeding iterations which satisfy the definition we use.
 \begin{lstlisting}
 if(foundSpring == false)
 	for(Int_t i=0; i < daysWeek; i++)
@@ -118,12 +124,14 @@ The date of each spring found is stored in a file
 "found\_spring\_date.dat". The registered days are saved in a histogram 
 that span one year. The resulting histogram can be seen in figure 
 \ref{fig:SA_dayHist}. Note the sharp start at day 46, representing the 
-15th of february. A total of 365 bins are used. One for each day, as 
-seen on the x-axis, and, the y-axis represent the number of entries.
-For each date registered, the temperature is saved in a histogram, see 
-figure \ref{fig:SA_tempHist} for more details. Here, the x-axis 
-represent the temperature interval and the y-axis the number of 
-entries. The resulting histogram is fitted to a exponential function,
+15th of february. The mean of the histogram, day 80, represent the 21 
+of March if its not a leap year and the 20 of March otherwise. A total 
+of 365 bins are used. One for each day, as seen on the x-axis, and, the 
+y-axis represent the number of entries. For each date registered, the 
+temperature is saved in a histogram, see figure \ref{fig:SA_tempHist} 
+for more details. Here, the x-axis represent the temperature interval 
+and the y-axis the number of entries. The resulting histogram is fitted 
+to a exponential function,
 \begin{equation}
 	f(x)=\alpha e^{-\lambda x}.\label{eq:SA_fitfunc}
 \end{equation}
@@ -134,11 +142,14 @@ the majority of temperatures ending up in the low temperature region.
 	\centering
 	\includegraphics[scale=.4]{../Code/springArrive_dayHist.jpg}
 	\caption{Number of times spring has arrived since the 18th century 
-	using the meteorological definition of SMHI. Note the sharp peak at 
-	day 46, representing the 15th of febuary. Dates after the last of July 
-	are not included. The histogram consist of 365 bins, one for each day 
-	of the year, seen on the x-axis, and, the number of entries on the 
-	y-axis.}
+	in Uppsala using the meteorological definition of SMHI. Day 80, the 
+	mean of this histogram, represent either March 20 if its a leap year 
+	or March 21 if its not a leap year. Note the sharp peak at day 46, 
+	representing the 15th of febuary. Dates after the last of July are not 
+	included. The histogram consist of 365 bins, one for each day of the 
+	year, seen on the x-axis, and, the number of entries on the y-axis. 
+	This binning shifts leap years by one day, however the effect is 
+	neglectable.}
 	\label{fig:SA_dayHist}
 \end{figure}
 \begin{figure}[htb]
@@ -148,9 +159,10 @@ the majority of temperatures ending up in the low temperature region.
 	fitted exponential function (red line), see equation 
 	\eqref{eq:SA_fitfunc}. The histogram fit relatively well with a 
 	exponential function, as expected since the gradual increase of the 
-	temperature each year should yield a decaying distribution. The 
-	x-axis represent the temperature and the y-axis the number of 
-	entries.}
+	temperature each year should yield a decaying distribution. Here, 
+	$p0$ represent $\alpha$, and, $p1$ represent $\lambda$ of equation 
+	\eqref{eq:SA_fitfunc}. The x-axis represent the temperature in 
+	$^\circ$C and the y-axis the number of entries.}
 	\label{fig:SA_tempHist}
 \end{figure}
 \end{document}
