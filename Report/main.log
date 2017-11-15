@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.30)  9 NOV 2017 21:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.8.30)  15 NOV 2017 19:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -636,6 +636,9 @@ LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
 \l_MT_above_shortintertext_sep=\dimen145
 \l_MT_below_shortintertext_sep=\dimen146
 )
+(/usr/share/texlive/texmf-dist/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
 (/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2001/04/09 non-zero parskip adjustments
 )
@@ -708,8 +711,9 @@ Type  H <return>  for immediate help.
                                                   
 l.4319 \ProcessKeyvalOptions{Hyp}
                                  
-? q
-OK, entering \batchmode...
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
 Package hyperref Info: Hyper figures OFF on input line 4443.
 Package hyperref Info: Link nesting OFF on input line 4448.
 Package hyperref Info: Hyper index ON on input line 4451.
@@ -739,7 +743,6 @@ LaTeX Info: Redefining \pageref on input line 6369.
 
 Package hyperref Message: Driver: hpdftex.
 
-
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
 \Fld@listcount=\count133
@@ -751,7 +754,8 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
 \Hy@SectionHShift=\skip55
-)) (./main.aux)
+))
+(./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -768,8 +772,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 9.
 LaTeX Font Info:    ... okay on input line 9.
-
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count135
 \scratchdimen=\dimen151
@@ -782,8 +785,7 @@ LaTeX Font Info:    ... okay on input line 9.
 \MPnumerator=\count139
 \makeMPintoPDFobject=\count140
 \everyMPtoPDFconversion=\toks28
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
@@ -818,191 +820,127 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 9.
 LaTeX Info: Redefining \pageref on input line 9.
 LaTeX Info: Redefining \nameref on input line 9.
+
+(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
  (./camreport/myreport.tex [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<../Code/Equinox_temps.jpg, id=44, 698.61pt x 475.7775pt>
+File: ../Code/Equinox_temps.jpg Graphic file (type jpg)
 
-LaTeX Warning: File `/home/courseuser/Project/Project/Code/Equinox_temps.jpg' n
-ot found on input line 50.
+<use ../Code/Equinox_temps.jpg>
+Package pdftex.def Info: ../Code/Equinox_temps.jpg used on input line 50.
+(pdftex.def)             Requested size: 199.16928pt x 135.64154pt.
 
+<../Code/week.jpg, id=47, 698.61pt x 475.7775pt>
+File: ../Code/week.jpg Graphic file (type jpg)
+ <use ../Code/week.jpg>
+Package pdftex.def Info: ../Code/week.jpg used on input line 65.
+(pdftex.def)             Requested size: 199.16928pt x 135.64154pt.
 
-! Package pdftex.def Error: File `/home/courseuser/Project/Project/Code/Equinox
-_temps.jpg' not found.
+<../Code/2week.jpg, id=50, 698.61pt x 475.7775pt>
+File: ../Code/2week.jpg Graphic file (type jpg)
+ <use ../Code/2week.jpg>
+Package pdftex.def Info: ../Code/2week.jpg used on input line 78.
+(pdftex.def)             Requested size: 199.16928pt x 135.64154pt.
 
-See the pdftex.def package documentation for explanation.
+[2 <../Code/Equinox_temps.jpg>] <../Code/1.jpg, id=58, 698.61pt x 475.7775pt>
+File: ../Code/1.jpg Graphic file (type jpg)
+
+<use ../Code/1.jpg>
+Package pdftex.def Info: ../Code/1.jpg used on input line 96.
+(pdftex.def)             Requested size: 199.16928pt x 135.64154pt.
+ <../Code/2.jpg, id=59, 698.61pt x 475.7775pt>
+File: ../Code/2.jpg Graphic file (type jpg)
+
+<use ../Code/2.jpg>
+Package pdftex.def Info: ../Code/2.jpg used on input line 104.
+(pdftex.def)             Requested size: 199.16928pt x 135.64154pt.
+ <../Code/3.jpg, id=60, 698.61pt x 475.7775pt>
+File: ../Code/3.jpg Graphic file (type jpg)
+
+<use ../Code/3.jpg>
+Package pdftex.def Info: ../Code/3.jpg used on input line 112.
+(pdftex.def)             Requested size: 199.16928pt x 135.64154pt.
+ [3 <../Code/week.jpg> <../Code/2week.jpg>] [4 <../Code/1.jpg> <../Code/2.jpg> 
+<../Code/3.jpg>]) (./viktor.tex [5] [6] [7] [8]
+<../Code/springArrive_dayHist.jpg, id=156, 899.36pt x 576.1525pt>
+File: ../Code/springArrive_dayHist.jpg Graphic file (type jpg)
+
+<use ../Code/springArrive_dayHist.jpg>
+Package pdftex.def Info: ../Code/springArrive_dayHist.jpg used on input line 14
+3.
+(pdftex.def)             Requested size: 269.81007pt x 172.84708pt.
+
+<../Code/springArrive_tempHist.jpg, id=157, 899.36pt x 576.1525pt>
+File: ../Code/springArrive_tempHist.jpg Graphic file (type jpg)
+
+<use ../Code/springArrive_tempHist.jpg>
+Package pdftex.def Info: ../Code/springArrive_tempHist.jpg used on input line 1
+57.
+(pdftex.def)             Requested size: 269.81007pt x 172.84708pt.
+) (./louise.tex [9 <../Code/springArrive_dayHist.jpg>] [10 <../Code/springArriv
+e_tempHist.jpg>]
+
+! LaTeX Error: There's no line here to end.
+
+See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.50 ...er/Project/Project/Code/Equinox_temps.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+l.59  \newline
+              
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
 
-
-LaTeX Warning: Reference `fig:vern' on page 2 undefined on input line 56.
-
-
-LaTeX Warning: Reference `fig:vern' on page 2 undefined on input line 59.
-
-
-LaTeX Warning: File `/home/courseuser/Project/Project/Code/week.jpg' not found 
-on input line 64.
-
-
-! Package pdftex.def Error: File `/home/courseuser/Project/Project/Code/week.jp
-g' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.64 .../courseuser/Project/Project/Code/week.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:week' on page 2 undefined on input line 69.
-
-
-LaTeX Warning: Reference `fig:vern' on page 2 undefined on input line 69.
-
- [2]
-
-LaTeX Warning: File `/home/courseuser/Project/Project/Code/2week.jpg' not found
- on input line 75.
-
-
-! Package pdftex.def Error: File `/home/courseuser/Project/Project/Code/2week.j
-pg' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.75 ...courseuser/Project/Project/Code/2week.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: Reference `fig:twoweek' on page 3 undefined on input line 80.
-
-
-LaTeX Warning: File `/home/courseuser/Project/Project/Code/1.jpg' not found on 
-input line 91.
-
-
-! Package pdftex.def Error: File `/home/courseuser/Project/Project/Code/1.jpg' 
-not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.91 ...ome/courseuser/Project/Project/Code/1.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `/home/courseuser/Project/Project/Code/2.jpg' not found on 
-input line 97.
-
-
-! Package pdftex.def Error: File `/home/courseuser/Project/Project/Code/2.jpg' 
-not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.97 ...ome/courseuser/Project/Project/Code/2.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-LaTeX Warning: File `/home/courseuser/Project/Project/Code/3.jpg' not found on 
-input line 103.
-
-
-! Package pdftex.def Error: File `/home/courseuser/Project/Project/Code/3.jpg' 
-not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.103 ...me/courseuser/Project/Project/Code/3.jpg}
-                                                  
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
- [3]
-
-LaTeX Warning: Text page 4 contains only floats.
-
- [4]) (./viktor.tex
-Overfull \hbox (131.44144pt too wide) in paragraph at lines 6--11
-\OT1/cmr/m/n/12 sea-son is nec-es-sary. On the web-page of SMHI (https://www.sm
-hi.se/kunskapsbanken/meteorologi/var-
- []
-
- [5] [6] [7])
-Runaway argument?
-{\@firstoffive }\fi . Note the sharp start at day 46, representing th\ETC.
-! File ended while scanning use of \Hy@setref@link.
-<inserted text> 
-                \par 
-l.12 	\input{viktor}
-                    
-I suspect you have forgotten a `}', causing me
-to read past where you wanted me to stop.
-I'll try to recover; but if the error is serious,
-you'd better type `E' or `X' now and fix your file.
-
- (./louise.tex [8] [9] [10]
-
-LaTeX Warning: Reference `fig:tempPerDay' on page 11 undefined on input line 10
-6.
-
-
-<../Code/tempPerDay.jpg, id=128, 899.36pt x 576.1525pt>
+[11] <../Code/tempPerDay.jpg, id=182, 899.36pt x 576.1525pt>
 File: ../Code/tempPerDay.jpg Graphic file (type jpg)
- <use ../Code/tempPerDay.jpg>
-Package pdftex.def Info: ../Code/tempPerDay.jpg used on input line 110.
-(pdftex.def)             Requested size: 426.79134pt x 273.41153pt.
 
-Overfull \hbox (36.79134pt too wide) in paragraph at lines 110--111
- [] 
- []
+<use ../Code/tempPerDay.jpg>
+Package pdftex.def Info: ../Code/tempPerDay.jpg used on input line 98.
+(pdftex.def)             Requested size: 369.88582pt x 236.95372pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-))
-! Emergency stop.
-<*> main.tex
-            
-*** (job aborted, no legal \end found)
-
- 
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 20.
+ [12] [13 <../Code/tempPerDay.jpg>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 20.
+ (./main.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 20.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 20.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: CDDA6084DF8E696BBD84693B1B913DCB;523.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 20.
+ ) 
 Here is how much of TeX's memory you used:
- 10715 strings out of 493029
- 160177 string characters out of 6136234
- 313983 words of memory out of 5000000
- 13981 multiletter control sequences out of 15000+600000
+ 10800 strings out of 493029
+ 161739 string characters out of 6136234
+ 316486 words of memory out of 5000000
+ 14047 multiletter control sequences out of 15000+600000
  15793 words of font info for 56 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,6n,104p,756b,1860s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 74i,7n,104p,804b,1862s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+tt12.pfb>
+Output written on main.pdf (13 pages, 352228 bytes).
+PDF statistics:
+ 251 PDF objects out of 1000 (max. 8388607)
+ 211 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 110 words of extra memory for PDF output out of 10000 (max. 10000000)
+

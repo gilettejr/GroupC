@@ -138,9 +138,9 @@ to a exponential function,
 The curve fit relatively well with the histogram. This is expected as 
 the gradual increase of the temperature each spring should result in 
 the majority of temperatures ending up in the low temperature region.
-\begin{figure}[htbp]
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=.3]{../Code/springArrive_dayHist.jpg}
+	\includegraphics[scale=.4]{../Code/springArrive_dayHist.jpg}
 	\caption{Number of times spring has arrived since the 18th century 
 	in Uppsala using the meteorological definition of SMHI. Day 80, the 
 	mean of this histogram, represent either March 20 if its a leap year 
@@ -152,9 +152,9 @@ the majority of temperatures ending up in the low temperature region.
 	neglectable.}
 	\label{fig:SA_dayHist}
 \end{figure}
-\begin{figure}[htbp]
+\begin{figure}[!htb]
 	\centering
-	\includegraphics[scale=.3]{../Code/springArrive_tempHist.jpg}
+	\includegraphics[scale=.4]{../Code/springArrive_tempHist.jpg}
 	\caption{Temperature histogram for all spring arrival dates (blue) and 
 	fitted exponential function (red line), see equation 
 	\eqref{eq:SA_fitfunc}. The histogram fit relatively well with a 

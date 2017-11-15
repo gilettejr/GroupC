@@ -64,12 +64,6 @@ void tempTrender::tempPerDay() {
 	//loop for calculating the mean temperatures of each day
 	for (UInt_t k=0; k < vyear.size(); k++){
 		
-		//if the location isn't Uppsala, update the daycounter but don't use the value
-		if (vloc.at(k) != 1){
-			daycounter = daycounter+1;
-			goto golabel1;
-		}
-		
 		//special case for the last date, otherwise vyear.at(k+1) is undefined (2014-01-01 is not part of the data)
 		if (vyear.at(k) == 2013 && vmonth.at(k) == 12 && vday.at(k) == 31){
 			daycounter = 365;
@@ -84,10 +78,9 @@ void tempTrender::tempPerDay() {
 		else if (vyear.at(k) == vyear.at(k+1)){
 			daycounter = daycounter+1;
 		}
+		
 		//put the sum of the temperatures of a day for every year in a vector
 		sumtempvec.at(daycounter-1)=sumtempvec.at(daycounter-1) + vtemp.at(k);
-		
-		golabel1: //for excluding locations other than Uppsala
 		
 		//if the daycounter has reached 365, it's a new year and the daycounter must be reset
 		if (daycounter == 365){
@@ -106,12 +99,6 @@ void tempTrender::tempPerDay() {
 	//loop for calculating the standard deviation
 	for (UInt_t k=0; k < vyear.size(); k++){
 		
-		//if the location isn't Uppsala, update the daycounter but exclude the temperature value
-		if (vloc.at(k) != 1){
-			daycounter = daycounter+1;
-			goto golabel2;
-		}
-		
 		//special case for the last date, otherwise vyear.at(k+1) is undefined (2014-01-01 is not part of the data)
 		if (vyear.at(k) == 2013 && vmonth.at(k) == 12 && vday.at(k) == 31){
 			daycounter = 365;
@@ -129,8 +116,6 @@ void tempTrender::tempPerDay() {
 		
 		//put the difference between the temperature and the mean temperature squared in a vector
 		vStdDev.at(daycounter-1) += (vtemp.at(k)-sumtempvec.at(daycounter-1))*(vtemp.at(k)-sumtempvec.at(daycounter-1));
-				
-		golabel2: //for excluding locations other than Uppsala
 		
 		//if the daycounter has reached 365, it's a new year and the daycounter must be reset
 		if (daycounter == 365){
@@ -143,8 +128,6 @@ void tempTrender::tempPerDay() {
 	for (UInt_t q=0;q<vStdDev.size();q++){
 		vStdDev.at(q) = TMath::Sqrt(vStdDev.at(q)/(yr_it-1));
 	}
-	
-	
 	
 	//filling the histogram with values for the mean temperatures and the standard deviations
 	for (int bin = 1; bin <= tempHist->GetNbinsX(); ++bin){
