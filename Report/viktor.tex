@@ -81,45 +81,7 @@ line with the definition of SMHI. At the final iteration of the for
 loop, the first registered date and temperature is stored. Note the 
 method does not divide the year into 52 weeks but instead look for the 
 first 7 succeeding iterations which satisfy the definition we use.
-\begin{lstlisting}
-if(foundSpring == false)
-	for(Int_t i=0; i < daysWeek; i++)
-		{
-			Double_t tmp;
-			getline(file,line, '\n');
-			stringstream ss(line);
-			if(ss >> year >> month >> day >> temp >> temp_urban >> id) //check output can is eligible
-			{
-				dayCount++;
-				if(id==dataset)//Take data from dataset
-				{
-					//dayCount>=46 represent 15 feb (minimum date for spring), month<8 
-					remove missing data (otherwise autumn is classified as spring)
-					if(temp_urban >= 0 && temp_urban <= 10 && dayCount >= 46 && month 
-					< 8) //Check if temperature fulfill definition of spring
-					{
-						if(i==0)
-						{
-							sYear=year; sMonth=month; sDay=day;
-							sTemp=temp_urban;
-						}
-						if(i == daysWeek-1) //Save temp of first day
-						{
-							foundSpring = true;
-							hDays->Fill(dayCount - (daysWeek+1)); //(daysWeek+1), 
-							+1 because dayCount incremented by 1 previously
-							hTemp->Fill(sTemp);
-							//Print date of spring
-							cout << "Spring found:\t" << sYear << "\t" << sMonth << "\t" << sDay << "\t" << sTemp << endl;
-							springDate << sYear << "\t" << sMonth << "\t" << sDay << "\t-\t" << sTemp << endl;
-						}
-					}
-					else //If temperature is not in interval, start new iteration
-						break;
-				}
-			}
-		}
-\end{lstlisting}
+\\\indent
 The date of each spring found is stored in a file 
 "found\_spring\_date.dat". The registered days are saved in a histogram 
 that span one year. The resulting histogram can be seen in figure 
